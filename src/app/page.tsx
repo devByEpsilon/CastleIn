@@ -1,69 +1,150 @@
-import Image from "next/image";
+import Link from "next/link";
+import { SigilHero } from "@/components/hero/SigilHero";
+import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
+import { MagneticLink } from "@/components/ui/MagneticLink";
+import { ArtworkFrame } from "@/features/artworks/components/ArtworkFrame";
+import { fadeUp, staggerContainer } from "@/lib/motion/variants";
+import { featuredArtworks } from "@/features/artworks/data";
 
-export default function Home() {
+export default function HomePage() {
+  const preview = featuredArtworks.slice(0, 3);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* ---------------------------------------------------------- */}
+      {/* HERO — scroll-grown Cyber Sun Sigil                         */}
+      {/* ---------------------------------------------------------- */}
+      <SigilHero />
+
+      {/* ---------------------------------------------------------- */}
+      {/* MANIFESTO                                                   */}
+      {/* ---------------------------------------------------------- */}
+      <section className="border-t border-line px-5 py-28 sm:px-8 sm:py-36">
+        <div className="mx-auto max-w-4xl">
+          <RevealOnScroll>
+            <p className="font-sans text-xs tracking-[0.1em] text-crimson-glow">
+              مانیفست
+            </p>
+          </RevealOnScroll>
+          <RevealOnScroll delay={0.1}>
+            <p className="mt-6 text-balance font-display text-3xl leading-[1.15] font-semibold text-bone sm:text-5xl">
+              هر تتویی که می‌زنم، شیئی است از آینده‌ای که هرگز از راه نرسید —
+              اشیای مقدس، قدیسان و ماشین‌ها، همگی به همان شکلی به یاد آورده
+              می‌شوند که پوست به یاد می‌آورد: برای همیشه.
+            </p>
+          </RevealOnScroll>
+          <RevealOnScroll delay={0.2}>
+            <p className="mt-8 max-w-xl text-bone-dim">
+              من تزئین طراحی نمی‌کنم. من اشیایی طراحی می‌کنم که به یک بدن
+              تعلق دارند — بلک‌ورک سنگین، هندسه‌ی کلیساهای گوتیک، و آن حس
+              آرام و نامتعارفِ چیزی مکانیکی که جایی نامناسب رشد می‌کند.
+            </p>
+          </RevealOnScroll>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      {/* ---------------------------------------------------------- */}
+      {/* SELECTED WORK                                               */}
+      {/* ---------------------------------------------------------- */}
+      <section className="border-t border-line px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-14 flex items-end justify-between gap-6">
+            <RevealOnScroll variants={fadeUp}>
+              <h2 className="font-display text-4xl text-bone sm:text-6xl">
+                برگزیده
+                <br />
+                آثار
+              </h2>
+            </RevealOnScroll>
+            <Link
+              href="/work"
+              data-cursor="باز کردن"
+              className="hidden shrink-0 font-sans text-xs tracking-[0.1em] text-bone-dim transition-colors hover:text-acid sm:block"
+            >
+              مشاهده آرشیو کامل &#8592;
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
+            {preview.map((artwork, i) => (
+              <RevealOnScroll key={artwork.id} delay={i * 0.1} variants={fadeUp}>
+                <Link
+                  href={`/work/${artwork.slug}`}
+                  data-cursor="VIEW"
+                  className="group block"
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <ArtworkFrame image={artwork.image} className="h-full w-full" />
+                  </div>
+                  <div className="mt-4 flex items-baseline justify-between">
+                    <h3 className="font-display text-lg text-bone group-hover:text-chrome">
+                      {artwork.title}
+                    </h3>
+                    <span className="font-mono text-xs text-ash">{artwork.year}</span>
+                  </div>
+                </Link>
+              </RevealOnScroll>
+            ))}
+          </div>
+
+          <Link
+            href="/work"
+            data-cursor="باز کردن"
+            className="mt-12 block font-sans text-xs tracking-[0.1em] text-bone-dim transition-colors hover:text-acid sm:hidden"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            مشاهده آرشیو کامل &#8592;
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ---------------------------------------------------------- */}
+      {/* PROCESS STRIP                                               */}
+      {/* ---------------------------------------------------------- */}
+      <section className="border-t border-line bg-ink px-5 py-24 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-6xl">
+          <RevealOnScroll variants={staggerContainer(0.12)}>
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
+              {[
+                { n: "01", t: "مشاوره", d: "گفتگویی درباره محل قرارگیری، اندازه و نمادی که می‌خواهید همراه داشته باشید." },
+                { n: "02", t: "طراحی", d: "خطوطی سفارشی برگرفته از مراجع گوتیک و سایبرنتیک، که همراه با شما اصلاح می‌شود." },
+                { n: "03", t: "ماندگاری", d: "بلک‌ورکی چندجلسه‌ای، با دقت و آرامش اجرا شده، تمیز بهبود می‌یابد و برای ماندن ساخته شده است." },
+              ].map((step) => (
+                <RevealOnScroll key={step.n} variants={fadeUp}>
+                  <p className="font-mono text-sm text-crimson-glow">{step.n}</p>
+                  <h3 className="mt-3 font-display text-2xl text-bone">
+                    {step.t}
+                  </h3>
+                  <p className="mt-3 text-sm text-bone-dim">{step.d}</p>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------- */}
+      {/* CONTACT CTA                                                 */}
+      {/* ---------------------------------------------------------- */}
+      <section className="border-t border-line px-5 py-28 sm:px-8 sm:py-40">
+        <div className="mx-auto max-w-5xl text-center">
+          <RevealOnScroll variants={fadeUp}>
+            <h2 className="text-balance font-display text-4xl text-chrome sm:text-7xl">
+              بیایید چیزی ماندگار بسازیم.
+            </h2>
+          </RevealOnScroll>
+          <RevealOnScroll delay={0.15} variants={fadeUp}>
+            <div className="mt-10 flex justify-center">
+              <MagneticLink
+                href="/contact"
+                cursorLabel="رزرو"
+                className="rounded-full border border-line-strong px-10 py-4 font-sans text-sm text-bone transition-colors hover:border-acid hover:text-acid"
+              >
+                شروع یک اثر
+              </MagneticLink>
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+    </>
   );
 }

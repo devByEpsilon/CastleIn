@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1200" viewBox="0 0 1500 1200">
+  <defs>
+    <radialGradient id="bg-3937317428" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#232228"/>
+      <stop offset="55%" stop-color="#131217"/>
+      <stop offset="100%" stop-color="#08080a"/>
+    </radialGradient>
+    <filter id="grain-3937317428">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/>
+    </filter>
+  </defs>
+  <rect width="1500" height="1200" fill="url(#bg-3937317428)"/>
+  <circle cx="621.6" cy="515.8" r="364.5" fill="#ffffff" opacity="0.120"/>
+  <circle cx="284.0" cy="968.0" r="505.7" fill="#ffffff" opacity="0.121"/>
+  <circle cx="604.4" cy="863.5" r="427.7" fill="#ffffff" opacity="0.185"/>
+  <circle cx="970.7" cy="161.1" r="287.8" fill="#ffffff" opacity="0.204"/>
+  <circle cx="597.5" cy="654.5" r="229.1" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
+  <circle cx="597.5" cy="654.5" r="320.7" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.18"/>
+  <path d="M 825.1412403420545 595.7528469152749 L 887.8 629.8 L 822.3 612.2 L 818.4 696.5 L 838.6 655.6 L 875.8 685.0 L 950.5 641.9" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.27"/>
+  <path d="M 807.9908450134099 483.40003615245223 L 900.7 443.6 L 866.7 519.0 L 851.7 569.1 L 783.1 542.1 L 702.2 538.2 L 662.8 480.5" fill="none" stroke="#ffffff" stroke-width="2.0" stroke-linecap="round" opacity="0.44"/>
+  <rect width="1500" height="1200" filter="url(#grain-3937317428)"/>
+  <rect width="1500" height="1200" fill="url(#bg-3937317428)" opacity="0.12"/>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1200" viewBox="0 0 1500 1200">
+  <defs>
+    <radialGradient id="bg-3937317429" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#232228"/>
+      <stop offset="55%" stop-color="#131217"/>
+      <stop offset="100%" stop-color="#08080a"/>
+    </radialGradient>
+    <filter id="grain-3937317429">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/>
+    </filter>
+  </defs>
+  <rect width="1500" height="1200" fill="url(#bg-3937317429)"/>
+  <circle cx="1241.6" cy="711.8" r="403.5" fill="#ffffff" opacity="0.116"/>
+  <circle cx="1062.2" cy="822.0" r="444.4" fill="#ffffff" opacity="0.115"/>
+  <circle cx="721.8" cy="1170.1" r="462.8" fill="#ffffff" opacity="0.104"/>
+  <circle cx="897.6" cy="675.2" r="332.5" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
+  <circle cx="897.6" cy="675.2" r="465.4" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.18"/>
+  <path d="M 902.7330268872902 722.5894466321915 L 949.7 810.2 L 998.7 855.7 L 1034.6 761.0 L 998.3 803.0 L 1029.3 750.7 L 1018.3 677.2 L 928.0 640.1" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" opacity="0.51"/>
+  <path d="M 588.5107113048434 475.1479719299823 L 590.2 579.0 L 556.2 520.6 L 606.6 511.7 L 587.3 420.2 L 668.4 373.1 L 706.8 418.4" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" opacity="0.53"/>
+  <path d="M 697.4977247184142 613.8041642121971 L 756.4 607.5 L 840.0 569.5 L 854.7 498.5 L 949.1 478.3 L 889.3 424.1 L 975.9 435.9 L 1042.1 400.1 L 1018.1 449.9" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" opacity="0.34"/>
+  <rect width="1500" height="1200" filter="url(#grain-3937317429)"/>
+  <rect width="1500" height="1200" fill="url(#bg-3937317429)" opacity="0.12"/>
+</svg>

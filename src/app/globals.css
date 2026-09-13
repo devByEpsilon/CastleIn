@@ -1,26 +1,211 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/* Design tokens — the single source of truth for the visual language. */
+/* ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surfaces */
+  --color-void: #050506;
+  --color-void-soft: #0a0a0d;
+  --color-ink: #101013;
+  --color-charcoal: #19191e;
+  --color-line: rgba(236, 231, 225, 0.09);
+  --color-line-strong: rgba(236, 231, 225, 0.18);
+
+  /* Text */
+  --color-bone: #eeeae4;
+  --color-bone-dim: #a7a3a0;
+  --color-ash: #6d6b71;
+
+  /* Accents */
+  --color-crimson: #9c1c2e;
+  --color-crimson-glow: #ff2f4e;
+  --color-violet: #6f57ff;
+  --color-violet-glow: #a894ff;
+  --color-acid: #d6ff3f;
+
+  /* Motion */
+  --ease-out-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-cinematic: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out-cinematic: cubic-bezier(0.83, 0, 0.17, 1);
+  --dur-fast: 0.2s;
+  --dur-base: 0.5s;
+  --dur-slow: 0.9s;
+  --dur-cinematic: 1.4s;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-void: var(--color-void);
+  --color-void-soft: var(--color-void-soft);
+  --color-ink: var(--color-ink);
+  --color-charcoal: var(--color-charcoal);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-bone: var(--color-bone);
+  --color-bone-dim: var(--color-bone-dim);
+  --color-ash: var(--color-ash);
+  --color-crimson: var(--color-crimson);
+  --color-crimson-glow: var(--color-crimson-glow);
+  --color-violet: var(--color-violet);
+  --color-violet-glow: var(--color-violet-glow);
+  --color-acid: var(--color-acid);
+
+  --color-background: var(--color-void);
+  --color-foreground: var(--color-bone);
+
+  --font-display: var(--font-lalezar);
+  --font-sans: var(--font-vazirmatn);
+  --font-mono: var(--font-jetbrains);
+  --font-blackletter: var(--font-pirata);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  background: var(--color-void);
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-void);
+  color: var(--color-bone);
+  font-family: var(--font-sans), "Segoe UI", Tahoma, ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-crimson);
+  color: var(--color-bone);
+}
+
+/* Slim, gothic-tech scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-charcoal);
+  border: 2px solid var(--color-void);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ash);
+}
+
+/* Focus states — visible, on-brand, never suppressed */
+:focus-visible {
+  outline: 2px solid var(--color-acid);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Utility: grain / noise texture overlay */
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Utility: chrome / metallic text gradient */
+.text-chrome {
+  background: linear-gradient(
+    115deg,
+    #8b8b91 0%,
+    #f2f2f0 22%,
+    #6b6b72 45%,
+    #f7f7f5 62%,
+    #4a4a50 80%,
+    #dcdce0 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px var(--color-bone-dim);
+  color: transparent;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Duotone treatment applied to placeholder photography so every image
+   belongs to the same visual world regardless of source content. */
+.duotone {
+  filter: grayscale(1) contrast(1.15) brightness(0.85);
+}
+.duotone::after {
+  content: "";
+}
+
+/* Hide native cursor only when the custom cursor is active (desktop, fine pointer) */
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor,
+  html.custom-cursor a,
+  html.custom-cursor button {
+    cursor: none;
+  }
+}
+
+/* Glitch heading: two chromatic ghosts flicker briefly and infrequently. */
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.glitch::before {
+  color: var(--color-crimson-glow);
+  animation: glitch-flicker-1 7s steps(1) infinite;
+}
+.glitch::after {
+  color: var(--color-violet-glow);
+  animation: glitch-flicker-2 7s steps(1) infinite;
+}
+@keyframes glitch-flicker-1 {
+  0%, 92%, 100% { opacity: 0; transform: translate(0, 0); }
+  93% { opacity: 0.7; transform: translate(-3px, 1px); }
+  94% { opacity: 0; }
+  95% { opacity: 0.6; transform: translate(3px, -1px); }
+  96% { opacity: 0; }
+}
+@keyframes glitch-flicker-2 {
+  0%, 90%, 100% { opacity: 0; transform: translate(0, 0); }
+  91% { opacity: 0.6; transform: translate(3px, 0); }
+  92% { opacity: 0; }
+  97% { opacity: 0.5; transform: translate(-2px, 1px); }
+  98% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
