@@ -2,10 +2,16 @@ import {
   GAP_TEETH,
   INNER_TIPS,
   OUTER_SPIKES,
+  RING_CIRCUMFERENCE,
+  RING_MID_R,
   RING_PATHS,
+  RING_TRACE_STROKE_WIDTH,
+  SUNBURST_CENTER,
   SUNBURST_VIEWBOX,
   type GrowElement,
 } from "./sunSigilGeometry";
+
+const [SUNBURST_CX, SUNBURST_CY] = SUNBURST_CENTER;
 
 function GrowFacets({
   el,
@@ -41,9 +47,11 @@ function GrowFacets({
  * The Chrome Sunburst — a spiky chrome ring: three concentric metallic
  * tubes with 16 small gap teeth, 16 inner tips, and 16 outer spikes (two
  * of them dominant "column" spikes at north/south) grown out of it.
- * The ring itself is always fully visible; SigilHero drives every
- * `.grow-el` from `scale: 0` via GSAP's svgOrigin, anchored at each
- * element's `data-ox`/`data-oy` — the exact point it shares with the ring.
+ * Markup renders the fully-formed rest state (ring traced, everything
+ * grown) by default — SigilHero's GSAP timeline is what hides it first
+ * (ring-draw mask dashoffset, `.grow-el` scale 0) and reveals it on
+ * scroll; under prefers-reduced-motion that timeline never runs, so this
+ * default state is exactly what those users see.
  */
 export function SunSigil() {
   return (
@@ -94,11 +102,31 @@ export function SunSigil() {
         <filter id="soften" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="10" />
         </filter>
+
+        {/* ring-draw reveal — a stroked circle along the ring's midline,
+            traced via stroke-dasharray/dashoffset like a compass sweeping
+            a circle. SigilHero animates the dashoffset on `.ring-trace`
+            from RING_CIRCUMFERENCE (nothing revealed) down to 0 (full
+            circle) as the very first stage, before anything grows. */}
+        <mask id="ringTraceMask" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="600">
+          <circle
+            className="ring-trace ring-trace-mask"
+            cx={SUNBURST_CX}
+            cy={SUNBURST_CY}
+            r={RING_MID_R}
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth={RING_TRACE_STROKE_WIDTH}
+            strokeDasharray={RING_CIRCUMFERENCE}
+            strokeDashoffset={0}
+          />
+        </mask>
       </defs>
 
-      {/* ring — three concentric tubes, always fully visible; every
-          grow-el below is anchored to a point on this ring */}
-      <g data-phase="ring">
+      {/* ring — three concentric tubes; only visible along the arc the
+          ring-draw mask above has revealed. Every grow-el below is
+          anchored to a point on this ring. */}
+      <g data-phase="ring" mask="url(#ringTraceMask)">
         {RING_PATHS.map((ring, i) => (
           <path
             key={i}
@@ -110,6 +138,22 @@ export function SunSigil() {
           />
         ))}
       </g>
+
+      {/* thin bright guide line — the "pen" tracing the ring; fades out
+          once the ring-draw stage finishes. Invisible at rest / under
+          reduced motion, where the ring is simply already fully formed. */}
+      <circle
+        className="ring-trace ring-trace-guide"
+        cx={SUNBURST_CX}
+        cy={SUNBURST_CY}
+        r={RING_MID_R}
+        fill="none"
+        stroke="var(--color-acid)"
+        strokeWidth={1.5}
+        strokeDasharray={RING_CIRCUMFERENCE}
+        strokeDashoffset={0}
+        opacity={0}
+      />
 
       {/* gap teeth — smallest, grow first */}
       <g data-phase="teeth">

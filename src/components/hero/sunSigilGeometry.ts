@@ -22,6 +22,13 @@ export const R1 = 85;
 export const R2 = 74;
 export const R_IN = 62;
 
+// The ring's "draw itself" reveal — a stroked circle along the ring's
+// midline, thick enough to mask the full tube, traced via
+// stroke-dasharray/dashoffset like a compass sweeping a circle.
+export const RING_MID_R = (R_OUT + R_IN) / 2;
+export const RING_TRACE_STROKE_WIDTH = R_OUT - R_IN + 4;
+export const RING_CIRCUMFERENCE = 2 * Math.PI * RING_MID_R;
+
 function polar(deg: number, r: number): [number, number] {
   const a = deg * D2R;
   return [CX + r * Math.sin(a), CY - r * Math.cos(a)];

@@ -9,15 +9,17 @@ import { useReducedMotionPreference } from "@/lib/motion/useReducedMotion";
 import { cn } from "@/lib/cn";
 import { HeroStarfield } from "./HeroStarfield";
 import { SunSigil } from "./SunSigil";
+import { RING_CIRCUMFERENCE } from "./sunSigilGeometry";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /**
  * The Hero: a pinned, scroll-scrubbed viewport in which a chrome sunburst
- * ring — already whole — grows every tooth and spike out of itself:
- * smallest gap teeth first, then the inner tips, then the sixteen outer
- * spikes (including the two dominant north/south columns) last, for the
- * most dramatic payoff at the end of the scroll range.
+ * first traces its own ring into existence — like a compass sweeping a
+ * full circle — then grows every tooth and spike out of that ring: smallest
+ * gap teeth first, then the inner tips, then the sixteen outer spikes
+ * (including the two dominant north/south columns) last, for the most
+ * dramatic payoff at the end of the scroll range.
  *
  * Respects prefers-reduced-motion by skipping the pin/timeline entirely and
  * rendering the sigil already complete, in a normal single-viewport section.
@@ -42,6 +44,12 @@ export function SigilHero() {
         svgOrigin: (_i, el) => `${(el as HTMLElement).dataset.ox} ${(el as HTMLElement).dataset.oy}`,
         scale: 0,
       });
+      // ring-draw reveal starts fully hidden: the mask circle's dash is
+      // pulled back to its own circumference (nothing traced yet), so the
+      // ring itself isn't visible until the first timeline stage sweeps it
+      // back in — a compass drawing a circle, not a fade/scale-in.
+      gsap.set(".ring-trace", { strokeDashoffset: RING_CIRCUMFERENCE });
+      gsap.set(".ring-trace-guide", { opacity: 0 });
       gsap.set(sigilWrapRef.current, { scale: 0.9, rotate: -1.5, opacity: 0.9 });
       gsap.set(".sigil-specular", { transformOrigin: "50% 50%" });
       gsap.set(".sigil-copy-kicker", { opacity: 0.25, y: 0 });
@@ -49,7 +57,7 @@ export function SigilHero() {
       gsap.set(".sigil-copy-sub, .sigil-copy-cta", { opacity: 0, y: 16 });
 
       // "bottom bottom" ties pin duration directly to the section's own
-      // responsive height (h-[320vh] / sm:h-[380vh]) so the timeline always
+      // responsive height (h-[210vh] / sm:h-[250vh]) so the timeline always
       // reaches 100% exactly at the end of the scrollable range, on any
       // breakpoint — ScrollTrigger's own resize handling keeps it in sync.
       const tl = gsap.timeline({
@@ -59,7 +67,7 @@ export function SigilHero() {
           pin: pinRef.current,
           start: "top top",
           end: "bottom bottom",
-          scrub: 1,
+          scrub: 0.6,
         },
       });
 
@@ -67,8 +75,15 @@ export function SigilHero() {
         .to(".sigil-copy-kicker", { opacity: 1, y: 0, duration: 0.6 }, "start")
         .to(sigilWrapRef.current, { scale: 0.96, duration: 1.6 }, "start")
 
+        // ring — traced into existence like a compass sweeping a full
+        // circle, before anything else grows out of it
+        .addLabel("ring", 0.4)
+        .to(".ring-trace", { strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut" }, "ring")
+        .to(".ring-trace-guide", { opacity: 1, duration: 0.3 }, "ring")
+        .to(".ring-trace-guide", { opacity: 0, duration: 0.5 }, "ring+=1.6")
+
         // teeth — the sixteen small gap teeth, smallest and first
-        .addLabel("teeth", 1.2)
+        .addLabel("teeth", 3.2)
         .to(
           ".gap-tooth",
           { scale: 1, duration: 1.4, stagger: { amount: 0.9 }, ease: "back.out(2)" },
@@ -76,7 +91,7 @@ export function SigilHero() {
         )
 
         // tips — the sixteen inner tips
-        .addLabel("tips", 2.8)
+        .addLabel("tips", 4.8)
         .to(
           ".inner-tip",
           { scale: 1, duration: 1.6, stagger: { amount: 1.1 }, ease: "back.out(2)" },
@@ -86,7 +101,7 @@ export function SigilHero() {
 
         // spikes — the sixteen outer spikes, longest and most dramatic,
         // the two column spikes among them
-        .addLabel("spikes", 4.6)
+        .addLabel("spikes", 6.6)
         .to(
           ".outer-spike",
           { scale: 1, duration: 2.4, stagger: { amount: 1.8 }, ease: "back.out(1.6)" },
@@ -95,7 +110,7 @@ export function SigilHero() {
         .to(sigilWrapRef.current, { scale: 1, opacity: 1, duration: 2.2 }, "spikes")
 
         // finale — a single bright flare across the whole ring, then copy
-        .addLabel("finale", 7.6)
+        .addLabel("finale", 9.6)
         .to(
           ".sigil-specular",
           { scale: 1.5, opacity: 0.75, duration: 0.5, yoyo: true, repeat: 1 },
@@ -113,7 +128,7 @@ export function SigilHero() {
       ref={sectionRef}
       className={cn(
         "relative w-full",
-        reducedMotion ? "h-[100svh] min-h-[640px]" : "h-[320vh] sm:h-[380vh]",
+        reducedMotion ? "h-[100svh] min-h-[640px]" : "h-[210vh] sm:h-[250vh]",
       )}
     >
       <div

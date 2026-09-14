@@ -15,16 +15,20 @@ function seeded(seed: number) {
   };
 }
 
-const STAR_COUNT = 60;
+const STAR_COUNT = 90;
 
+// Sizes/opacities skew brighter than a "realistic" faint starfield would —
+// at 1-2px and low opacity most of these read as invisible against pure
+// black on a real phone screen, which is what made the effect look like it
+// only covered the top of the hero instead of the full viewport.
 const STARS: { x: number; y: number; r: number; opacity: number }[] = (() => {
   const rnd = seeded(7);
   return Array.from({ length: STAR_COUNT }, () => {
-    const x = 20 + rnd() * 68;
-    const y = 4 + rnd() * 92;
+    const x = 4 + rnd() * 92;
+    const y = 3 + rnd() * 94;
     const roll = rnd();
-    const r = roll < 0.12 ? 2.2 : roll < 0.4 ? 1.4 : 0.9;
-    const opacity = 0.15 + rnd() * 0.45;
+    const r = roll < 0.15 ? 3.0 : roll < 0.45 ? 2.1 : 1.5;
+    const opacity = 0.35 + rnd() * 0.55;
     return { x, y, r, opacity };
   });
 })();
