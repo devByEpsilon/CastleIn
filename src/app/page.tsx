@@ -2,9 +2,10 @@ import Link from "next/link";
 import { SigilHero } from "@/components/hero/SigilHero";
 import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
 import { MagneticLink } from "@/components/ui/MagneticLink";
-import { ArtworkFrame } from "@/features/artworks/components/ArtworkFrame";
+import { TarotCard } from "@/features/artworks/components/TarotCard";
 import { fadeUp, staggerContainer } from "@/lib/motion/variants";
 import { featuredArtworks } from "@/features/artworks/data";
+import { toRoman } from "@/lib/roman";
 
 export default function HomePage() {
   const preview = featuredArtworks.slice(0, 3);
@@ -65,24 +66,21 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
+          <div
+            className="grid gap-x-6 gap-y-10"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))" }}
+          >
             {preview.map((artwork, i) => (
               <RevealOnScroll key={artwork.id} delay={i * 0.1} variants={fadeUp}>
-                <Link
+                <TarotCard
                   href={`/work/${artwork.slug}`}
-                  data-cursor="VIEW"
-                  className="group block"
-                >
-                  <div className="relative aspect-[3/4] overflow-hidden">
-                    <ArtworkFrame image={artwork.image} className="h-full w-full" />
-                  </div>
-                  <div className="mt-4 flex items-baseline justify-between">
-                    <h3 className="font-display text-lg text-bone group-hover:text-chrome">
-                      {artwork.title}
-                    </h3>
-                    <span className="font-mono text-xs text-ash">{artwork.year}</span>
-                  </div>
-                </Link>
+                  image={artwork.image}
+                  numeral={toRoman(i + 1)}
+                  titleEn={artwork.titleEn}
+                  titleFa={artwork.title}
+                  styleTag={artwork.category}
+                  priority
+                />
               </RevealOnScroll>
             ))}
           </div>

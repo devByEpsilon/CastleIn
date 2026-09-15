@@ -16,13 +16,14 @@ export const artworks: Artwork[] = [
     id: "1",
     slug: "void-serpent",
     title: "مار خلأ",
+    titleEn: "Void Serpent",
     category: "بلک‌ورک",
     year: 2025,
     description:
       "ماری پیچیده که با بلک‌ورک پررنگ اجرا شده، فلس‌هایش در انتهای دم به نویز مداری تبدیل می‌شود.",
     statement:
       "مار قدیمی‌ترین نمادی است که همیشه به آن بازمی‌گردم — پوست‌اندازی، بازسازی، هرگز تمام‌نشده. اینجا در نویز حل می‌شود، نیمی حیوان، نیمی سیگنال.",
-    image: { src: "/artworks/void-serpent/main.svg", alt: "تتوی بلک‌ورک ماری پیچیده روی ساعد که دمش به خطوط ریز مداری تبدیل می‌شود", width: 1400, height: 1750 },
+    image: { src: "/artworks/04af61ba5aa9ca68a80111e4081ff00b.jpg", alt: "تتوی بلک‌ورک شبکه خار و رعد و برق که از آرنج روی ساعد منشعب می‌شود", width: 736, height: 981 },
     gallery: [
       { src: "/artworks/void-serpent/g1.svg", alt: "جزئیات خطوط فلس‌های مار", width: 1400, height: 1050 },
       { src: "/artworks/void-serpent/g2.svg", alt: "نمای کامل اثر مار خلأ روی ساعد", width: 1400, height: 1750 },
@@ -37,13 +38,14 @@ export const artworks: Artwork[] = [
     id: "2",
     slug: "chrome-angel",
     title: "فرشته کروم",
+    titleEn: "Chrome Angel",
     category: "سایبرنتیک",
     year: 2025,
     description:
       "فرشته‌ای سقوط‌کرده که با آبکاری کروم و سیم‌کشی نمایان بازسازی شده، بال‌هایی مثل ماشین‌آلات شکسته تا خورده.",
     statement:
       "فرشته‌ها در متون کهن هرگز مهربان نبودند. می‌خواستم چیزی نزدیک به همان باشد — بدنی از فلز، هنوز قادر به سقوط.",
-    image: { src: "/artworks/chrome-angel/main.svg", alt: "تتوی فرشته سایبرنتیک با بال‌های آبکاری‌شده کروم و مفاصل مکانیکی نمایان", width: 1500, height: 1200 },
+    image: { src: "/artworks/5351483e8047eaa2905722189082ec93.jpg", alt: "تتوی بلک‌ورک خار روی بازو با یک شکاف سرخ عمودی که از میان طرح می‌گذرد", width: 1200, height: 1600 },
     gallery: [
       { src: "/artworks/chrome-angel/g1.svg", alt: "نمای نزدیک جزئیات بال فرشته کروم", width: 1400, height: 1750 },
     ],
@@ -57,6 +59,7 @@ export const artworks: Artwork[] = [
     id: "3",
     slug: "black-orchid",
     title: "ارکیده سیاه",
+    titleEn: "Black Orchid",
     category: "فاین‌لاین",
     year: 2024,
     description:
@@ -71,13 +74,14 @@ export const artworks: Artwork[] = [
     id: "4",
     slug: "demon-eye",
     title: "چشم دیو",
+    titleEn: "Demon Eye",
     category: "اکالت",
     year: 2024,
     description:
       "چشمی خیره و بی‌پلک درون طلسمی شکسته، که از داخل مچ دست نگاه می‌کند.",
     statement:
       "یک طلسم محافظ است، نه یک تهدید. چیزی که مراقب دستت هست تا خودت مجبور نباشی.",
-    image: { src: "/artworks/demon-eye/main.svg", alt: "تتوی چشم اکالت محصور در طلسمی شکسته روی داخل مچ دست", width: 1400, height: 1400 },
+    image: { src: "/artworks/bedfd656cbb5f691909777d81d8540ca.jpg", alt: "تتوی اکالت خط‌سرخ خورشید، خنجر و تسبیح صلیب‌دار روی ساعد کنار بقایای خار بلک‌ورک", width: 736, height: 1308 },
     gallery: [
       { src: "/artworks/demon-eye/g1.svg", alt: "زاویه‌ای دیگر از طلسم چشم دیو", width: 1400, height: 1400 },
     ],
@@ -91,6 +95,7 @@ export const artworks: Artwork[] = [
     id: "5",
     slug: "sacred-machine",
     title: "ماشین مقدس",
+    titleEn: "Sacred Machine",
     category: "سایبرنتیک",
     year: 2023,
     description:
@@ -105,6 +110,7 @@ export const artworks: Artwork[] = [
     id: "6",
     slug: "nocturnal-cross",
     title: "صلیب شبانه",
+    titleEn: "Nocturnal Cross",
     category: "تزئین گوتیک",
     year: 2023,
     description:
@@ -119,6 +125,7 @@ export const artworks: Artwork[] = [
     id: "7",
     slug: "digital-thorn",
     title: "خار دیجیتال",
+    titleEn: "Digital Thorn",
     category: "سایبرنتیک",
     year: 2022,
     description:
@@ -133,6 +140,7 @@ export const artworks: Artwork[] = [
     id: "8",
     slug: "hollow-saint",
     title: "قدیس تهی",
+    titleEn: "Hollow Saint",
     category: "اکالت",
     year: 2022,
     description:
@@ -148,6 +156,58 @@ export const artworks: Artwork[] = [
     placement: "ران",
     hours: 11,
     featured: true,
+    size: "md",
+  },
+  {
+    id: "9",
+    slug: "thorn-conduit",
+    title: "مجرای خار",
+    titleEn: "Thorn Conduit",
+    category: "بلک‌ورک",
+    year: 2025,
+    description:
+      "شبکه‌ای متراکم از خارهای بلک‌ورک که از آرنج تا ساعد مثل رگ یا سیم‌کشی منشعب می‌شود، با گره‌ای مرکزی که نور را می‌بلعد.",
+    statement:
+      "بدن هم مثل مدار است — گره، انشعاب، انتقال. این خارها مسیر همان جریان را روی پوست نقشه‌برداری می‌کنند.",
+    image: { src: "/artworks/thorn-conduit/main.svg", alt: "تتوی بلک‌ورک شبکه خار متراکم از آرنج تا ساعد", width: 1470, height: 1960 },
+    tags: ["خار", "بلک‌ورک", "آرنج", "ساعد"],
+    placement: "آرنج تا ساعد",
+    hours: 9,
+    featured: true,
+    size: "lg",
+  },
+  {
+    id: "10",
+    slug: "crimson-fracture",
+    title: "شکاف ارغوانی",
+    titleEn: "Crimson Fracture",
+    category: "بلک‌ورک",
+    year: 2025,
+    description:
+      "قابی از خارهای بلک‌ورک دور آرنج که یک شکاف سرخ عمودی از میانش عبور می‌کند، انگار پوست از زیر تَرَک برداشته.",
+    statement:
+      "می‌خواستم یک زخم به نظر برسد، نه یک تزئین. خط سرخ تنها جایی است که طرح تسلیم می‌شود.",
+    image: { src: "/artworks/crimson-fracture/main.svg", alt: "تتوی بلک‌ورک خار دور آرنج با یک شکاف سرخ عمودی در میانه", width: 1200, height: 1600 },
+    tags: ["خار", "سرخ", "آرنج", "بلک‌ورک"],
+    placement: "آرنج",
+    hours: 5,
+    size: "sm",
+  },
+  {
+    id: "11",
+    slug: "relic-of-thorns",
+    title: "یادگار خار",
+    titleEn: "Relic of Thorns",
+    category: "اکالت",
+    year: 2024,
+    description:
+      "ترکیبی از خطوط سرخ اکالت روی ساعد — خورشیدی پرتوافکن، خنجری رو به پایین و تسبیحی صلیب‌دار، در کنار بقایای خاری بلک‌ورک از کاری قدیمی‌تر.",
+    statement:
+      "لایه‌گذاری روی کار قبلی به جای پاک‌کردنش. یادگارها این‌طور کار می‌کنند — روی هم انباشته می‌شوند، نه جایگزین هم.",
+    image: { src: "/artworks/relic-of-thorns/main.svg", alt: "تتوی اکالت خط‌سرخ خورشید، خنجر و تسبیح صلیب‌دار روی ساعد کنار خار بلک‌ورک قدیمی", width: 1470, height: 1960 },
+    tags: ["اکالت", "سرخ", "خنجر", "ساعد"],
+    placement: "ساعد",
+    hours: 6,
     size: "md",
   },
 ];

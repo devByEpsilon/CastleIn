@@ -57,7 +57,7 @@ export function ArtworkDetail({ artwork, previous, next }: ArtworkDetailProps) {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="relative aspect-[4/5] w-full"
           >
-            <ArtworkFrame image={artwork.image} className="h-full w-full" priority tint="violet" />
+            <ArtworkFrame image={artwork.image} className="h-full w-full" priority tint="none" />
           </motion.div>
 
           <div className="flex flex-col gap-8">

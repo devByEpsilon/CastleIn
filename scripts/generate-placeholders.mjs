@@ -104,6 +104,9 @@ const artworkSeeds = [
   "nocturnal-cross",
   "digital-thorn",
   "hollow-saint",
+  "thorn-conduit",
+  "crimson-fracture",
+  "relic-of-thorns",
 ];
 
 const sizes = {
@@ -115,6 +118,9 @@ const sizes = {
   "nocturnal-cross": [1300, 1700],
   "digital-thorn": [1400, 1750],
   "hollow-saint": [1500, 1200],
+  "thorn-conduit": [1470, 1960],
+  "crimson-fracture": [1200, 1600],
+  "relic-of-thorns": [1470, 1960],
 };
 
 const galleryCount = {

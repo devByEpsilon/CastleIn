@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Lalezar, Pirata_One, Vazirmatn } from "next/font/google";
+import {
+  Cinzel,
+  EB_Garamond,
+  JetBrains_Mono,
+  Lalezar,
+  Pirata_One,
+  Vazirmatn,
+} from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 
@@ -36,6 +43,29 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
+/**
+ * Ornate gothic serif for the tarot-card numeral + English title band —
+ * engraved, Latin only (see TarotCard). Never used for Farsi copy.
+ *
+ * Note: the more ornamental "Cinzel Decorative" cut triggers a
+ * "Cinzel is not defined" ReferenceError in Turbopack's `next dev` font
+ * codegen on this Next.js version (production `next build` is unaffected).
+ * Plain Cinzel gives nearly the same engraved-caps look without the bug.
+ */
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["600", "700", "900"],
+});
+
+/** Small italic serif for the tarot-card studio byline/signature line. */
+const ebGaramond = EB_Garamond({
+  variable: "--font-eb-garamond",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://castlein.example"),
   title: {
@@ -70,7 +100,7 @@ export default function RootLayout({
     <html
       lang="fa"
       dir="rtl"
-      className={`${lalezar.variable} ${pirataOne.variable} ${vazirmatn.variable} ${jetbrainsMono.variable} h-full`}
+      className={`${lalezar.variable} ${pirataOne.variable} ${vazirmatn.variable} ${jetbrainsMono.variable} ${cinzel.variable} ${ebGaramond.variable} h-full`}
     >
       <body className="min-h-full bg-void text-bone antialiased">
         <a

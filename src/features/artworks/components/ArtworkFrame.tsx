@@ -11,9 +11,9 @@ interface ArtworkFrameProps {
 }
 
 /**
- * Renders artwork photography through a unified duotone + tint treatment so
- * placeholder imagery (or, later, real photography of any lighting/color)
- * reads as one coherent world.
+ * Renders artwork photography, optionally through a duotone + tint treatment
+ * so placeholder imagery reads as one coherent world. Pass `tint="none"` for
+ * real photography that should show its own true color, unfiltered.
  */
 export function ArtworkFrame({
   image,
@@ -31,7 +31,10 @@ export function ArtworkFrame({
         height={image.height}
         sizes={sizes}
         priority={priority}
-        className="duotone h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+        className={cn(
+          tint !== "none" && "duotone",
+          "h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]",
+        )}
       />
       {tint !== "none" && (
         <div

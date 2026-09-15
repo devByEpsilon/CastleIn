@@ -26,8 +26,10 @@ export interface Artwork {
   id: string;
   /** URL-safe identifier, used for /work/[slug] */
   slug: string;
-  /** Display title. */
+  /** Display title (Farsi). */
   title: string;
+  /** Latin/English rendering of the title, used on the tarot card's title band. */
+  titleEn: string;
   category: ArtworkCategory;
   year: number;
   /** Short editorial description, 1-3 sentences. */

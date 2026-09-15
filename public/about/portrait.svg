@@ -1,25 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
   <defs>
-    <radialGradient id="bg-2681954172" cx="50%" cy="42%" r="75%">
+    <radialGradient id="bg-1295919947" cx="50%" cy="42%" r="75%">
       <stop offset="0%" stop-color="#232228"/>
       <stop offset="55%" stop-color="#131217"/>
       <stop offset="100%" stop-color="#08080a"/>
     </radialGradient>
-    <filter id="grain-2681954172">
+    <filter id="grain-1295919947">
       <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
       <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/>
     </filter>
   </defs>
-  <rect width="1200" height="1500" fill="url(#bg-2681954172)"/>
-  <circle cx="254.0" cy="927.6" r="372.1" fill="#ffffff" opacity="0.104"/>
-  <circle cx="704.7" cy="1345.7" r="332.6" fill="#ffffff" opacity="0.213"/>
-  <circle cx="277.4" cy="678.9" r="527.2" fill="#ffffff" opacity="0.186"/>
-  <circle cx="710.1" cy="515.9" r="235.4" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
-  <circle cx="710.1" cy="515.9" r="329.6" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.18"/>
-  <path d="M 515.2721963915974 749.8750699334778 L 536.1 836.8 L 495.4 888.8 L 542.0 865.7 L 501.2 845.1 L 544.8 755.9 L 480.0 766.8 L 457.2 721.0 L 398.5 692.7 L 390.0 744.6" fill="none" stroke="#ffffff" stroke-width="2.0" stroke-linecap="round" opacity="0.34"/>
-  <path d="M 676.9224568549544 722.2657435806468 L 719.9 716.1 L 660.8 754.0 L 706.3 765.6 L 757.8 724.0 L 679.4 788.3 L 669.8 702.0 L 575.3 735.9 L 528.6 781.2 L 577.8 716.9" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.38"/>
-  <path d="M 666.4195306878537 712.7738525276072 L 761.5 702.7 L 804.9 703.4 L 897.9 649.0 L 900.7 584.6 L 944.5 628.1 L 996.3 628.7 L 926.0 637.8 L 941.2 596.3 L 878.9 624.2" fill="none" stroke="#ffffff" stroke-width="1.0" stroke-linecap="round" opacity="0.35"/>
-  <path d="M 468.2855065539479 539.9948707432486 L 459.0 448.4 L 405.1 477.9 L 437.7 413.7 L 485.9 382.1 L 557.4 311.9 L 525.3 348.5 L 555.2 380.5" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" opacity="0.50"/>
-  <rect width="1200" height="1500" filter="url(#grain-2681954172)"/>
-  <rect width="1200" height="1500" fill="url(#bg-2681954172)" opacity="0.12"/>
+  <rect width="1200" height="1500" fill="url(#bg-1295919947)"/>
+  <circle cx="1150.9" cy="1490.4" r="525.1" fill="#ffffff" opacity="0.209"/>
+  <circle cx="587.7" cy="457.6" r="415.4" fill="#ffffff" opacity="0.114"/>
+  <circle cx="76.4" cy="851.3" r="325.3" fill="#ffffff" opacity="0.122"/>
+  <circle cx="592.3" cy="563.0" r="301.5" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
+  <circle cx="592.3" cy="563.0" r="422.0" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.18"/>
+  <path d="M 702.459693448618 550.4113762406632 L 642.0 606.0 L 696.8 599.5 L 772.5 632.8 L 689.2 591.9 L 733.1 505.7 L 671.4 463.5 L 697.1 565.6 L 714.4 507.3 L 763.8 544.8" fill="none" stroke="#ffffff" stroke-width="1.1" stroke-linecap="round" opacity="0.54"/>
+  <path d="M 522.679401319474 550.2657367964275 L 485.6 591.2 L 511.2 522.2 L 420.8 543.5 L 479.8 528.5 L 418.1 460.7 L 367.4 413.4 L 425.8 481.2 L 356.0 455.1 L 332.2 536.1" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.29"/>
+  <rect width="1200" height="1500" filter="url(#grain-1295919947)"/>
+  <rect width="1200" height="1500" fill="url(#bg-1295919947)" opacity="0.12"/>
 </svg>
