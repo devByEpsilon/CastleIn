@@ -60,7 +60,8 @@ export function TarotCard({
               fill
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 40vw, 80vw"
               priority={priority}
-              className="h-full w-full object-cover"
+              style={{ objectPosition: "50% 52%" }}
+              className="h-full w-full scale-[1.08] object-cover"
             />
           </div>
 

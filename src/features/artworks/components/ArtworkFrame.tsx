@@ -31,9 +31,10 @@ export function ArtworkFrame({
         height={image.height}
         sizes={sizes}
         priority={priority}
+        style={{ objectPosition: "50% 52%" }}
         className={cn(
           tint !== "none" && "duotone",
-          "h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]",
+          "h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] scale-[1.08] group-hover:scale-[1.14]",
         )}
       />
       {tint !== "none" && (

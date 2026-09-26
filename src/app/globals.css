@@ -24,14 +24,15 @@
   --color-violet-glow: #a894ff;
   --color-acid: #d6ff3f;
 
-  /* Tarot card palette — aged parchment, brass, dried blood */
-  --color-parchment-1: #e9dcb6;
-  --color-parchment-2: #d8c595;
-  --color-parchment-3: #c4ad78;
-  --color-tarot-ink: #17130e;
-  --color-brass: #8c6f33;
-  --color-brass-light: #b9985a;
+  /* Tarot card palette — gothic verdigris green, tarnished bronze, dried blood */
+  --color-parchment-1: #5e6f47;
+  --color-parchment-2: #37452a;
+  --color-parchment-3: #171f11;
+  --color-tarot-ink: #0b0f08;
+  --color-brass: #55703f;
+  --color-brass-light: #8aa661;
   --color-blood: #5c1414;
+  --color-tarot-tint: #2f4a2c;
 
   /* Motion */
   --ease-out-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
@@ -65,6 +66,7 @@
   --color-brass: var(--color-brass);
   --color-brass-light: var(--color-brass-light);
   --color-blood: var(--color-blood);
+  --color-tarot-tint: var(--color-tarot-tint);
 
   --color-background: var(--color-void);
   --color-foreground: var(--color-bone);
@@ -228,13 +230,13 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  background: linear-gradient(160deg, #161310, #0c0a08 70%);
+  background: linear-gradient(160deg, #100c09, #050403 70%);
   border-radius: 3px;
   padding: 3.6% 3.4%;
   box-shadow:
     0 30px 54px -14px rgba(0, 0, 0, 0.92),
     0 10px 22px -8px rgba(0, 0, 0, 0.85),
-    0 0 0 1px rgba(140, 111, 51, 0.15);
+    0 0 0 1px rgba(85, 112, 63, 0.18);
   transition: transform var(--dur-base) var(--ease-out-cinematic),
     box-shadow var(--dur-base) var(--ease-out-cinematic);
   will-change: transform;
@@ -245,8 +247,8 @@ body {
   box-shadow:
     0 42px 66px -14px rgba(0, 0, 0, 0.95),
     0 14px 26px -8px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(185, 152, 90, 0.4),
-    0 0 24px rgba(185, 152, 90, 0.12);
+    0 0 0 1px rgba(138, 166, 97, 0.45),
+    0 0 24px rgba(138, 166, 97, 0.16);
 }
 
 /* The parchment insert itself — torn deckled edges via clip-path. */
@@ -258,34 +260,39 @@ body {
   flex-direction: column;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 25% 15%, rgba(255, 255, 255, 0.18), transparent 45%),
-    radial-gradient(ellipse at 80% 85%, rgba(120, 95, 50, 0.35), transparent 55%),
-    radial-gradient(ellipse at 70% 20%, rgba(90, 60, 30, 0.25), transparent 50%),
+    radial-gradient(ellipse at 25% 15%, rgba(255, 255, 255, 0.1) 0%, transparent 42%),
+    radial-gradient(ellipse at 80% 85%, rgba(20, 32, 14, 0.55), transparent 55%),
+    radial-gradient(ellipse at 70% 20%, rgba(16, 26, 10, 0.4), transparent 50%),
+    radial-gradient(ellipse at 15% 70%, rgba(14, 22, 9, 0.45), transparent 45%),
     linear-gradient(155deg, var(--color-parchment-1) 0%, var(--color-parchment-2) 55%, var(--color-parchment-3) 100%);
   clip-path: polygon(0% 0%, 3.85% 2.87%, 7.69% 0%, 11.54% 0%, 15.38% 0%, 19.23% 0%, 23.08% 0.28%, 26.92% 0.17%, 30.77% 4.11%, 34.62% 0%, 38.46% 0%, 42.31% 0.31%, 46.15% 1.85%, 50% 0.4%, 53.85% 0%, 57.69% 0%, 61.54% 0.65%, 65.38% 0%, 69.23% 0.06%, 73.08% 0.5%, 76.92% 0%, 80.77% 0%, 84.62% 0%, 88.46% 0.58%, 92.31% 0.83%, 96.15% 0.43%, 100% 0.18%, 100% 2.5%, 100% 5%, 99.68% 7.5%, 99.29% 10%, 100% 12.5%, 100% 15%, 100% 17.5%, 100% 20%, 100% 22.5%, 100% 25%, 99.89% 27.5%, 99.3% 30%, 100% 32.5%, 100% 35%, 98.99% 37.5%, 100% 40%, 100% 42.5%, 99.8% 45%, 100% 47.5%, 100% 50%, 99% 52.5%, 99.97% 55%, 100% 57.5%, 99.18% 60%, 100% 62.5%, 100% 65%, 98.97% 67.5%, 98.7% 70%, 100% 72.5%, 100% 75%, 99.75% 77.5%, 100% 80%, 100% 82.5%, 99.23% 85%, 100% 87.5%, 98.7% 90%, 99.28% 92.5%, 100% 95%, 99.94% 97.5%, 100% 100%, 96.15% 100%, 92.31% 100%, 88.46% 99.93%, 84.62% 100%, 80.77% 99.31%, 76.92% 99.22%, 73.08% 99.3%, 69.23% 100%, 65.38% 98.62%, 61.54% 100%, 57.69% 99%, 53.85% 99.04%, 50% 99%, 46.15% 100%, 42.31% 100%, 38.46% 99.73%, 34.62% 99.25%, 30.77% 99.66%, 26.92% 100%, 23.08% 99.1%, 19.23% 99.45%, 15.38% 100%, 11.54% 100%, 7.69% 98.96%, 3.85% 100%, 0% 99.51%, 0.89% 97.5%, 0% 95%, 1.06% 92.5%, 0% 90%, 0% 87.5%, 0.06% 85%, 0% 82.5%, 0.72% 80%, 0% 77.5%, 0% 75%, 0% 72.5%, 0% 70%, 0% 67.5%, 0.18% 65%, 0% 62.5%, 0% 60%, 2.43% 57.5%, 0% 55%, 0% 52.5%, 0.5% 50%, 0% 47.5%, 0.12% 45%, 0% 42.5%, 0% 40%, 0.6% 37.5%, 0.14% 35%, 0.91% 32.5%, 0.25% 30%, 0.03% 27.5%, 0% 25%, 0% 22.5%, 0.44% 20%, 0.97% 17.5%, 0.13% 15%, 0.75% 12.5%, 0% 10%, 0% 7.5%, 0% 5%, 0.62% 2.5%);
 }
 
-/* Paper grain. */
+/* Paper grain — fine noise only; scratches live in ::after below. */
 .tarot-parchment::before {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.5;
+  z-index: 1;
+  opacity: 0.55;
   mix-blend-mode: multiply;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
 }
 
-/* Age stains + burned-edge vignette, inset so it reads as scorched paper. */
+/* Dark verdigris age stains + burned-edge vignette. */
 .tarot-parchment::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 12% 88%, rgba(92, 20, 20, 0.14), transparent 30%),
-    radial-gradient(circle at 90% 10%, rgba(60, 40, 10, 0.22), transparent 35%);
-  box-shadow: inset 0 0 3.5vw rgba(20, 14, 6, 0.85), inset 0 0 1vw rgba(10, 7, 3, 0.6);
+    radial-gradient(circle at 12% 88%, rgba(20, 34, 14, 0.4), transparent 32%),
+    radial-gradient(circle at 90% 12%, rgba(14, 26, 10, 0.5), transparent 38%),
+    radial-gradient(circle at 55% 45%, rgba(10, 18, 7, 0.28), transparent 55%),
+    radial-gradient(circle at 8% 30%, rgba(16, 28, 12, 0.18), transparent 25%);
+  box-shadow: inset 0 0 4.2vw rgba(4, 8, 3, 0.92), inset 0 0 1.4vw rgba(2, 4, 1, 0.75);
 }
 
 .tarot-number {
@@ -310,20 +317,28 @@ body {
   background: var(--color-tarot-ink);
   box-shadow: 0 0 0 1px rgba(23, 19, 14, 0.5);
 }
+/* Darken + desaturate the raw photo so the green tint layer below reads as
+   one consistent color grade instead of fighting each photo's own bright,
+   varied lighting. */
 .tarot-art-window img {
-  filter: contrast(1.12) saturate(1.05);
+  filter: contrast(1.15) saturate(0.75) brightness(0.72);
+  box-shadow: inset 0 3em 2.4em -2.2em rgba(4, 8, 3, 0.8), inset 0 -3em 2.4em -2.2em rgba(4, 8, 3, 0.85);
   transition: transform 0.7s ease;
 }
 .tarot-card:hover .tarot-art-window img,
 .tarot-card:focus-within .tarot-art-window img {
   transform: scale(1.05);
 }
+/* Uniform gothic-green color grade — recolors every photo toward the same
+   verdigris hue regardless of its original lighting/color. */
 .tarot-art-window::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(23, 19, 14, 0.06), transparent 20%, transparent 80%, rgba(23, 19, 14, 0.12));
+  background: var(--color-tarot-tint);
+  opacity: 0.55;
+  mix-blend-mode: color;
 }
 
 .tarot-title-band {
@@ -331,6 +346,7 @@ body {
   z-index: 2;
   margin: 5% 6% 0;
   border: 1.5px solid var(--color-tarot-ink);
+  background: rgba(150, 168, 118, 0.78);
   padding: 7% 4% 5%;
   text-align: center;
 }
@@ -360,7 +376,7 @@ body {
   font-style: italic;
   font-size: 11px;
   letter-spacing: 0.04em;
-  color: #4a3f2c;
+  color: #2b3320;
   margin: 4% 0 6%;
 }
 

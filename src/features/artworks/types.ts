@@ -10,7 +10,8 @@ export type ArtworkCategory =
   | "تزئین گوتیک"
   | "اکالت"
   | "فاین‌لاین"
-  | "بیومکانیکال";
+  | "بیومکانیکال"
+  | "کانسپچوال";
 
 export interface ArtworkImage {
   /** Path or remote URL. Local files should live under /public/artworks/. */

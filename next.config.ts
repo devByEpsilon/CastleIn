@@ -2,10 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // All artwork imagery ships locally as generated SVG placeholders (see
-    // scripts/generate-placeholders.mjs) — no remote hosts are needed. SVG
-    // is allowed through next/image only for our own trusted, locally
-    // generated assets, locked down with a strict CSP + forced download
+    // Artwork photography is local JPG, no SVG involved. The about page's
+    // portrait (/public/about/portrait.svg) is still SVG, so next/image
+    // needs this — locked down with a strict CSP + forced download
     // disposition per Next.js's documented guidance.
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
